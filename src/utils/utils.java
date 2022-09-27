@@ -59,8 +59,10 @@ public class utils {
      *
      * @return Un double
      */
-    public static double getDouble() {
+    public static double getDouble(String message) {
         Scanner scanner = new Scanner(System.in);
+        // print "Entrer la valeur de {message}" in one string
+        System.out.printf("Entrer la valeur de %s : \n", message);
         System.out.print("> ");
         while (!scanner.hasNextDouble()) {
             System.out.println("Veuillez entrer un nombre");

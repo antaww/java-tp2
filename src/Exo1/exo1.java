@@ -15,8 +15,8 @@ public class exo1 {
         }
 
         Archimede archimede = new Archimede();
-        archimede.Cn(utils.getDouble("X"), utils.getDouble("Y"));
-        archimede.Ln(utils.getDouble("X"), utils.getDouble("Y"));
+        System.out.println(archimede.Cn(utils.getDouble("X"), utils.getDouble("Y")));
+        System.out.println(archimede.Ln(utils.getDouble("X"), utils.getDouble("Y")));
         utils.Continue(utils.getExoNumber());
     }
 }
