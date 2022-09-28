@@ -73,6 +73,24 @@ public class utils {
         return choix;
     }
 
+    public static double getPositifDouble() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Entrer un nombre positif");
+        System.out.print("> ");
+        while (!scanner.hasNextDouble()) {
+            System.out.println("Veuillez entrer un nombre");
+            System.out.print("> ");
+            scanner.next();
+        }
+        double choix = scanner.nextDouble();
+        while (choix < 0) {
+            System.out.println("Veuillez entrer un nombre positif");
+            System.out.print("> ");
+            choix = scanner.nextDouble();
+        }
+        return choix;
+    }
+
     /**
      * Il demande à l'utilisateur d'entrer un entier positif, et si l'utilisateur entre un entier négatif, il demande à
      * nouveau
