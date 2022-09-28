@@ -25,7 +25,7 @@ public class menu {
         for (int i = 0; i < listOfFiles.length; i++) {
             if (choix.equals(String.valueOf(i+1))) {
                 try {
-                    Class.forName("Exo" + (i+1) + ".exo" + (i+1)).getMethod("main", String[].class).invoke(null, (Object) args);
+                    Class.forName("Exo" + (i+1) + ".exo" + (i+1)).getMethod("main", String[].class).invoke(null, (Object) null);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
