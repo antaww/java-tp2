@@ -167,7 +167,7 @@ public class utils {
             }
             case "2" -> {
                 try {
-                    Class<?> c = Class.forName("Exo" + exo + ".exo" + exo);
+                    Class<?> c = Class.forName("terminal.Exo" + exo + ".exo" + exo);
                     c.getMethod("main", String[].class).invoke(null, (Object) null);
                 } catch (Exception e) {
                     e.printStackTrace();
