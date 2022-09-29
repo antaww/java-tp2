@@ -2,7 +2,7 @@
 // - Olivier MISTRAL
 // - Antoine PIZZETTA
 
-package Exo4;
+package terminal.Exo4;
 
 import utils.utils;
 

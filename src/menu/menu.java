@@ -15,7 +15,7 @@ public class menu {
      */
     public static void main(String[] args) {
         System.out.println("Choisissez un exercice :");
-        File folder = new File("src");
+        File folder = new File("src/terminal");
         File[] listOfFiles = folder.listFiles((dir, name) -> name.toLowerCase().contains("exo"));
         for (int i = 0; i < listOfFiles.length; i++) {
             System.out.println((i+1) + ". Exercice " + (i+1));
@@ -26,7 +26,7 @@ public class menu {
         for (int i = 0; i < listOfFiles.length; i++) {
             if (choix.equals(String.valueOf(i+1))) {
                 try {
-                    Class.forName("Exo" + (i+1) + ".exo" + (i+1)).getMethod("main", String[].class).invoke(null, (Object) null);
+                    Class.forName("terminal.Exo" + (i+1) + ".exo" + (i+1)).getMethod("main", String[].class).invoke(null, (Object) null);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

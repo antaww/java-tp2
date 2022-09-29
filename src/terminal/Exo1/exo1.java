@@ -2,12 +2,9 @@
 // - Olivier MISTRAL
 // - Antoine PIZZETTA
 
-package Exo1;
+package terminal.Exo1;
 
 import utils.utils;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
 
 public class exo1 {
     public static void main(String[] args) {

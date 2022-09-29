@@ -1,6 +1,6 @@
 package gui;
 
-import Exo1.exo1;
+import terminal.Exo1.exo1;
 import menu.menu;
 
 import javax.swing.*;
