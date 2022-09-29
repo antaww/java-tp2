@@ -17,21 +17,29 @@ public class exo4 {
         while (allumettes > 0) {
             if (tour) {
                 int choix = (int) (Math.random() * 3) + 1;
-                System.out.println("L'ordinateur enlève : " + choix + " reste " + (allumettes - choix));
+                while(allumettes - choix < 0){
+                    choix = (int) (Math.random() * 3) + 1;
+                }
+                System.out.println("|".repeat(allumettes) + " L'ordinateur enlève : " + choix + " reste " + (allumettes - choix));
                 allumettes -= choix;
             } else {
-                System.out.println(nom + " enlève : ");
+                System.out.println("|".repeat(allumettes) + " " + nom + " enlève : ");
                 int choix = utils.getInt();
+                while(allumettes - choix < 0){
+                    System.out.println("Vous ne pouvez pas enlever plus d'allumettes que le nombre d'allumettes restantes");
+                    System.out.println("|".repeat(allumettes) + " " + nom + " enlève : ");
+                    choix = utils.getInt();
+                }
                 while (choix < 1 || choix > 3) {
                     System.out.println("Vous devez enlever 1, 2 ou 3 allumettes");
                     choix = utils.getInt();
                 }
+                System.out.println(choix + " reste " + (allumettes - choix));
                 allumettes -= choix;
             }
             tour = !tour;
         }
-        System.out.println(tour ? nom + " a gagné :-(" : "L'ordinateur a gagné :-(");
-        System.out.println(tour ? "L'ordinateur a perdu :-(" : nom + " a perdu :-(");
+        System.out.println(tour ? nom + " a perdu\nL'ordinateur a gagné" : "L'ordinateur a perdu\n" + nom + " a gagné");
         utils.Continue(utils.getExoNumber());
     }
 }
