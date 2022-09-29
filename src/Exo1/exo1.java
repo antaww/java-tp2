@@ -1,6 +1,9 @@
 package Exo1;
 
 import utils.utils;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class exo1 {
     public static void main(String[] args) {
@@ -15,7 +18,7 @@ public class exo1 {
         utils.Continue(utils.getExoNumber());
     }
 
-    static class Archimede {
+    public static class Archimede {
         public static double Cn(double x, double y) {
             return  2 * x * y / (x + y);
         }
@@ -23,7 +26,7 @@ public class exo1 {
         public static double Ln(double x, double y) {
             return Math.sqrt(x * y);
         }
-        private static double[] An(int n) {
+        public static double[] An(int n) {
             double x = 4;
             double y = (2*Math.sqrt(2));
             for (int i = 0; i < n; i++) {

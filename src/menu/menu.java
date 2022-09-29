@@ -21,6 +21,7 @@ public class menu {
             System.out.println((i+1) + ". Exercice " + (i+1));
         }
         System.out.println("0. Quitter");
+        System.out.println("G. GUI");
         String choix = utils.getString();
         for (int i = 0; i < listOfFiles.length; i++) {
             if (choix.equals(String.valueOf(i+1))) {
@@ -33,6 +34,8 @@ public class menu {
         }
         if (choix.equals("0")) {
             utils.SystemOut();
+        } else if(choix.equals("G") || choix.equals("g")) {
+            gui.gui.main(args);
         } else {
             System.out.println("Choix invalide");
             menu.main(args);
