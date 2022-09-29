@@ -1,3 +1,7 @@
+// Réalisé par :
+// - Olivier MISTRAL
+// - Antoine PIZZETTA
+
 package Exo3;
 
 import utils.utils;

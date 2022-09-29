@@ -1,3 +1,7 @@
+// Réalisé par :
+// - Olivier MISTRAL
+// - Antoine PIZZETTA
+
 package Exo1;
 
 import utils.utils;
@@ -6,11 +10,11 @@ public class exo1 {
     public static void main(String[] args) {
         Archimede archimede = new Archimede();
         System.out.println("Cn");
-        System.out.println(archimede.Cn(utils.getDouble("X"), utils.getDouble("Y")));
+        System.out.println(Archimede.Cn(utils.getDouble("X"), utils.getDouble("Y")));
         System.out.println("Ln");
-        System.out.println(archimede.Ln(utils.getDouble("X"), utils.getDouble("Y")));
+        System.out.println(Archimede.Ln(utils.getDouble("X"), utils.getDouble("Y")));
         System.out.println("An");
-        double[] array = archimede.An(5);
+        double[] array = Archimede.An(5);
         System.out.println("["+String.join(", ", java.util.Arrays.stream(array).mapToObj(String::valueOf).toArray(String[]::new))+"]");
         utils.Continue(utils.getExoNumber());
     }
