@@ -61,7 +61,6 @@ public class utils {
      */
     public static double getDouble(String message) {
         Scanner scanner = new Scanner(System.in);
-        // print "Entrer la valeur de {message}" in one string
         System.out.printf("Entrer la valeur de %s : \n", message);
         System.out.print("> ");
         while (!scanner.hasNextDouble()) {
@@ -143,7 +142,7 @@ public class utils {
     }
 
     /**
-     * Il permet de choisir entre quitter, revenir au menu ou relancer l'exercice
+     * Il permet de choisir entre quitter, revenir au terminal.menu ou relancer l'exercice
      *
      * @param exo le numéro d'exercice
      */
@@ -159,7 +158,7 @@ public class utils {
             }
             case "1" -> {
                 try {
-                    Class<?> c = Class.forName("menu.menu");
+                    Class<?> c = Class.forName("terminal.menu.menu");
                     c.getMethod("main", String[].class).invoke(null, (Object) null);
                 } catch (Exception e) {
                     e.printStackTrace();

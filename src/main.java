@@ -2,7 +2,7 @@
 // - Olivier MISTRAL
 // - Antoine PIZZETTA
 
-import menu.menu;
+import terminal.menu.menu;
 
 public class main {
     /**

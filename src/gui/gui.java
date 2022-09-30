@@ -1,7 +1,8 @@
 package gui;
 
 import terminal.Exo1.exo1;
-import menu.menu;
+import terminal.Exo2.exo2;
+import terminal.menu.menu;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,19 +34,17 @@ public class gui {
         m2.add(author1);
         m2.add(author2);
         frame.getContentPane().add(BorderLayout.NORTH, mb);
-
         JLabel label = new JLabel("TP2 - JAVA");
         label.setVerticalAlignment(JLabel.CENTER);
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setFont(new Font("Poppins", Font.PLAIN, 40));
         label.setForeground(Color.BLACK);
-
         frame.add(label);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         try {
             frame.setVisible(true);
-            System.out.println("GUI loaded"); //DEBUG
+            System.out.println("GUI chargé!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,9 +52,10 @@ public class gui {
         JButton cnBtn = new JButton("Cn");
         JButton lnBtn = new JButton("Ln");
         JButton anBtn = new JButton("An");
-
+        JButton impotsBtn = new JButton("Impôts");
 
         displayEx1(frame, exercice1, label, cnBtn, lnBtn, anBtn);
+        displayEx2(frame, exercice2, label, impotsBtn);
         displayTerminalMode(args, frame, terminalMode);
     }
 
@@ -96,9 +96,7 @@ public class gui {
                 y = JOptionPane.showInputDialog("Entrez la valuer de y :");
             }
             var result = exo1.Archimede.Cn(Double.parseDouble(x), Double.parseDouble(y));
-            System.out.println(result);
             JOptionPane.showMessageDialog(null, "Cn = " + result, "Résultat", JOptionPane.INFORMATION_MESSAGE);
-            frame.setVisible(true);
         });
 
         lnBtn.addActionListener((ActionEvent e) -> {
@@ -111,7 +109,6 @@ public class gui {
                 y = JOptionPane.showInputDialog("Entrez la valuer de y :");
             }
             var result = exo1.Archimede.Ln(Double.parseDouble(x), Double.parseDouble(y));
-            System.out.println(result);
             JOptionPane.showMessageDialog(null, "Ln = " + result, "Résultat", JOptionPane.INFORMATION_MESSAGE);
             frame.setVisible(true);
         });
@@ -122,9 +119,27 @@ public class gui {
                 x = JOptionPane.showInputDialog("Entrez la valeur de x :");
             }
             var result = exo1.Archimede.An(Integer.parseInt(x));
-            System.out.println(result[0] + " " + result[1]);
             JOptionPane.showMessageDialog(null, "An = [" + result[0] + ", " + result[1] + "]", "Résultat", JOptionPane.INFORMATION_MESSAGE);
             frame.setVisible(true);
+        });
+    }
+
+    private static void displayEx2(JFrame frame, JMenuItem exercice2, JLabel label, JButton impotsBtn) {
+        exercice2.addActionListener((ActionEvent e) -> {
+            label.setVerticalAlignment(JLabel.TOP);
+            label.setText("Exercice 2");
+            impotsBtn.setBounds(150, 170, 100, 50);
+            frame.add(impotsBtn);
+            frame.setLayout(null);
+            frame.setVisible(true);
+        });
+        impotsBtn.addActionListener((ActionEvent e) -> {
+            String gains = JOptionPane.showInputDialog("Entrer la valeur de vos gains annuels : ");
+            while (!isDouble(gains)) {
+                gains = JOptionPane.showInputDialog("Entrer la valeur de vos gains annuels : ");
+            }
+            var result = exo2.MesImpots(Double.parseDouble(gains));
+            JOptionPane.showMessageDialog(frame, "Vous devez payer " + String.format("%.2f", result) + " euros d'impôts", "Résultat", JOptionPane.INFORMATION_MESSAGE);
         });
     }
 

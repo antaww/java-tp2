@@ -2,7 +2,7 @@
 // - Olivier MISTRAL
 // - Antoine PIZZETTA
 
-package menu;
+package terminal.menu;
 
 import utils.utils;
 

@@ -14,7 +14,8 @@ public class exo1 {
         System.out.println("Ln");
         System.out.println(Archimede.Ln(utils.getDouble("X"), utils.getDouble("Y")));
         System.out.println("An");
-        double[] array = Archimede.An(5);
+        System.out.printf("Entrer la valeur de X : \n");
+        double[] array = Archimede.An(utils.getInt());
         System.out.println("["+String.join(", ", java.util.Arrays.stream(array).mapToObj(String::valueOf).toArray(String[]::new))+"]");
         utils.Continue(utils.getExoNumber());
     }
