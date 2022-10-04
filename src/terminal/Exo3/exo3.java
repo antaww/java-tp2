@@ -26,7 +26,7 @@ public class exo3 {
         utils.Continue(utils.getExoNumber());
     }
 
-    static BigInteger factoriel(BigInteger n) {
+    public static BigInteger factoriel(BigInteger n) {
         BigInteger result = BigInteger.valueOf(1);
         for (int i = 1; i <= n.intValue(); i++) {
             result = result.multiply(BigInteger.valueOf(i));
@@ -34,7 +34,7 @@ public class exo3 {
         return result;
     }
 
-    static BigInteger cnp(BigInteger n, BigInteger p) {
+    public static BigInteger cnp(BigInteger n, BigInteger p) {
         BigInteger result;
         result = factoriel(n).divide(factoriel(p).multiply(factoriel(n.subtract(p))));
         return result;

@@ -9,12 +9,12 @@ import utils.utils;
 public class exo1 {
     public static void main(String[] args) {
         Archimede archimede = new Archimede();
-        System.out.println("Cn");
+        System.out.println("Calcul de Cn");
         System.out.println(Archimede.Cn(utils.getDouble("X"), utils.getDouble("Y")));
-        System.out.println("Ln");
+        System.out.println("Calcul de Ln");
         System.out.println(Archimede.Ln(utils.getDouble("X"), utils.getDouble("Y")));
-        System.out.println("An");
-        System.out.printf("Entrer la valeur de X : \n");
+        System.out.println("Calcul de An");
+        System.out.println("Entrer la valeur de N :");
         double[] array = Archimede.An(utils.getInt());
         System.out.println("["+String.join(", ", java.util.Arrays.stream(array).mapToObj(String::valueOf).toArray(String[]::new))+"]");
         utils.Continue(utils.getExoNumber());

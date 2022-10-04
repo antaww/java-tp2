@@ -61,7 +61,7 @@ public class utils {
      */
     public static double getDouble(String message) {
         Scanner scanner = new Scanner(System.in);
-        System.out.printf("Entrer la valeur de %s : \n", message);
+        System.out.printf("Entrez la valeur de %s : \n", message);
         System.out.print("> ");
         while (!scanner.hasNextDouble()) {
             System.out.println("Veuillez entrer un nombre");
@@ -74,7 +74,7 @@ public class utils {
 
     public static double getPositifDouble() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Entrer un nombre positif");
+        System.out.println("Entrez un nombre positif");
         System.out.print("> ");
         while (!scanner.hasNextDouble()) {
             System.out.println("Veuillez entrer un nombre");

@@ -2,11 +2,13 @@ package gui;
 
 import terminal.Exo1.exo1;
 import terminal.Exo2.exo2;
+import terminal.Exo3.exo3;
 import terminal.menu.menu;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.math.BigInteger;
 
 
 public class gui {
@@ -44,7 +46,7 @@ public class gui {
         frame.setLocationRelativeTo(null);
         try {
             frame.setVisible(true);
-            System.out.println("GUI chargé!");
+            System.out.println("GUI chargé ! \n(Pour revenir en mode terminal, choisissez le mode terminal dans le menu graphique)");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,9 +55,12 @@ public class gui {
         JButton lnBtn = new JButton("Ln");
         JButton anBtn = new JButton("An");
         JButton impotsBtn = new JButton("Impôts");
+        JButton factorielBtn = new JButton("Factoriel");
+        JButton cnpBtn = new JButton("Cn (P)");
 
-        displayEx1(frame, exercice1, label, cnBtn, lnBtn, anBtn);
-        displayEx2(frame, exercice2, label, impotsBtn);
+        displayEx1(frame, exercice1, label, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn);
+        displayEx2(frame, exercice2, label, impotsBtn, cnBtn, lnBtn, anBtn, factorielBtn, cnpBtn);
+        displayEx3(frame, exercice3, label, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn);
         displayTerminalMode(args, frame, terminalMode);
     }
 
@@ -63,7 +68,7 @@ public class gui {
         terminalMode.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String ObjButtons[] = {"Oui", "Non"};
+                String[] ObjButtons = {"Oui", "Non"};
                 int PromptResult = JOptionPane.showOptionDialog(null, "Êtes-vous sûr de vouloir quitter ?", "Alerte", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, ObjButtons, ObjButtons[1]);
                 if (PromptResult == JOptionPane.YES_OPTION) {
                     frame.dispose();
@@ -73,13 +78,14 @@ public class gui {
         });
     }
 
-    private static void displayEx1(JFrame frame, JMenuItem exercice1, JLabel label, JButton cnBtn, JButton lnBtn, JButton anBtn) {
+    private static void displayEx1(JFrame frame, JMenuItem exercice1, JLabel label, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton impotsBtn, JButton factorielBtn, JButton cnpBtn) {
         exercice1.addActionListener((ActionEvent e) -> {
             label.setVerticalAlignment(JLabel.TOP);
             label.setText("Exercice 1");
             cnBtn.setBounds(150, 100, 100, 50);
             lnBtn.setBounds(150, 170, 100, 50);
             anBtn.setBounds(150, 240, 100, 50);
+            removeEveryBtns(frame, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn);
             frame.add(cnBtn);
             frame.add(lnBtn);
             frame.add(anBtn);
@@ -124,23 +130,67 @@ public class gui {
         });
     }
 
-    private static void displayEx2(JFrame frame, JMenuItem exercice2, JLabel label, JButton impotsBtn) {
+    private static void displayEx2(JFrame frame, JMenuItem exercice2, JLabel label, JButton impotsBtn, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton factorielBtn, JButton cnpBtn) {
         exercice2.addActionListener((ActionEvent e) -> {
             label.setVerticalAlignment(JLabel.TOP);
             label.setText("Exercice 2");
             impotsBtn.setBounds(150, 170, 100, 50);
+            removeEveryBtns(frame, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn);
             frame.add(impotsBtn);
             frame.setLayout(null);
             frame.setVisible(true);
         });
         impotsBtn.addActionListener((ActionEvent e) -> {
-            String gains = JOptionPane.showInputDialog("Entrer la valeur de vos gains annuels : ");
+            String gains = JOptionPane.showInputDialog("Entrez la valeur de vos gains annuels : ");
             while (!isDouble(gains)) {
-                gains = JOptionPane.showInputDialog("Entrer la valeur de vos gains annuels : ");
+                gains = JOptionPane.showInputDialog("Entrez la valeur de vos gains annuels : ");
             }
             var result = exo2.MesImpots(Double.parseDouble(gains));
             JOptionPane.showMessageDialog(frame, "Vous devez payer " + String.format("%.2f", result) + " euros d'impôts", "Résultat", JOptionPane.INFORMATION_MESSAGE);
         });
+    }
+
+    private static void displayEx3(JFrame frame, JMenuItem exercice3, JLabel label, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton impotsBtn, JButton factorielBtn, JButton cnpBtn) {
+        exercice3.addActionListener((ActionEvent e) -> {
+            label.setVerticalAlignment(JLabel.TOP);
+            label.setText("Exercice 3");
+            factorielBtn.setBounds(150, 100, 100, 50);
+            cnpBtn.setBounds(150, 170, 100, 50);
+            removeEveryBtns(frame, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn);
+            frame.add(factorielBtn);
+            frame.add(cnpBtn);
+            frame.setLayout(null);
+            frame.setVisible(true);
+        });
+        factorielBtn.addActionListener((ActionEvent e) -> {
+            String x = JOptionPane.showInputDialog("Entrez la valeur de x :");
+            while (!isInt(x)) {
+                x = JOptionPane.showInputDialog("Entrez la valeur de x :");
+            }
+            var result = exo3.factoriel(BigInteger.valueOf(Integer.parseInt(x)));
+            JOptionPane.showMessageDialog(frame, x + "! = " + result, "Résultat", JOptionPane.INFORMATION_MESSAGE);
+        });
+        cnpBtn.addActionListener((ActionEvent e) -> {
+            String x = JOptionPane.showInputDialog("Entrez la valeur de x :");
+            while (!isInt(x)) {
+                x = JOptionPane.showInputDialog("Entrez la valeur de x :");
+            }
+            String y = JOptionPane.showInputDialog("Entrez la valeur de y :");
+            while (!isInt(y)) {
+                y = JOptionPane.showInputDialog("Entrez la valuer de y :");
+            }
+            var result = exo3.cnp(BigInteger.valueOf(Integer.parseInt(x)), BigInteger.valueOf(Integer.parseInt(y)));
+            JOptionPane.showMessageDialog(frame, x + " parmi " + y + " = " + result, "Résultat", JOptionPane.INFORMATION_MESSAGE);
+        });
+    }
+
+    private static void removeEveryBtns(JFrame frame, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton impotsBtn, JButton factorielBtn, JButton cnpBtn) {
+        frame.remove(impotsBtn);
+        frame.remove(factorielBtn);
+        frame.remove(cnpBtn);
+        frame.remove(cnBtn);
+        frame.remove(lnBtn);
+        frame.remove(anBtn);
     }
 
     private static boolean isDouble(String input) {
