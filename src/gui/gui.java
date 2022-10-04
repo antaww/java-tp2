@@ -28,11 +28,13 @@ public class gui {
         JMenuItem exercice2 = new JMenuItem("Exercice 2");
         JMenuItem exercice3 = new JMenuItem("Exercice 3");
         JMenuItem exercice4 = new JMenuItem("Exercice 4");
+        JMenuItem quitter = new JMenuItem("Quitter");
         m1.add(terminalMode);
         m1.add(exercice1);
         m1.add(exercice2);
         m1.add(exercice3);
         m1.add(exercice4);
+        m1.add(quitter);
         m2.add(author1);
         m2.add(author2);
         frame.getContentPane().add(BorderLayout.NORTH, mb);
@@ -59,6 +61,18 @@ public class gui {
         JButton cnpBtn = new JButton("Cn (P)");
         JButton nimBtn = new JButton("Nim");
 
+        quitter.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String[] ObjButtons = {"Oui", "Non"};
+                int PromptResult = JOptionPane.showOptionDialog(null, "Êtes-vous sûr de vouloir quitter ?", "Alerte", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, ObjButtons, ObjButtons[1]);
+                if (PromptResult == JOptionPane.YES_OPTION) {
+                    frame.dispose();
+                    utils.utils.SystemOut();
+                }
+            }
+        });
+
         displayEx1(frame, exercice1, label, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn, nimBtn);
         displayEx2(frame, exercice2, label, impotsBtn, cnBtn, lnBtn, anBtn, factorielBtn, cnpBtn, nimBtn);
         displayEx3(frame, exercice3, label, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn, nimBtn);
@@ -71,10 +85,10 @@ public class gui {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String[] ObjButtons = {"Oui", "Non"};
-                int PromptResult = JOptionPane.showOptionDialog(null, "Êtes-vous sûr de vouloir quitter ?", "Alerte", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, ObjButtons, ObjButtons[1]);
+                int PromptResult = JOptionPane.showOptionDialog(null, "Êtes-vous sûr de vouloir quitter le GUI \npour revenir au mode terminal ?", "Alerte", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, ObjButtons, ObjButtons[1]);
                 if (PromptResult == JOptionPane.YES_OPTION) {
                     frame.dispose();
-                    menu.main(args);
+                    utils.utils.SystemOut();
                 }
             }
         });
