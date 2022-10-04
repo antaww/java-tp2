@@ -57,10 +57,12 @@ public class gui {
         JButton impotsBtn = new JButton("Impôts");
         JButton factorielBtn = new JButton("Factoriel");
         JButton cnpBtn = new JButton("Cn (P)");
+        JButton nimBtn = new JButton("Nim");
 
-        displayEx1(frame, exercice1, label, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn);
-        displayEx2(frame, exercice2, label, impotsBtn, cnBtn, lnBtn, anBtn, factorielBtn, cnpBtn);
-        displayEx3(frame, exercice3, label, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn);
+        displayEx1(frame, exercice1, label, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn, nimBtn);
+        displayEx2(frame, exercice2, label, impotsBtn, cnBtn, lnBtn, anBtn, factorielBtn, cnpBtn, nimBtn);
+        displayEx3(frame, exercice3, label, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn, nimBtn);
+        displayEx4(frame, exercice4, label, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn, nimBtn);
         displayTerminalMode(args, frame, terminalMode);
     }
 
@@ -78,14 +80,14 @@ public class gui {
         });
     }
 
-    private static void displayEx1(JFrame frame, JMenuItem exercice1, JLabel label, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton impotsBtn, JButton factorielBtn, JButton cnpBtn) {
+    private static void displayEx1(JFrame frame, JMenuItem exercice1, JLabel label, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton impotsBtn, JButton factorielBtn, JButton cnpBtn, JButton nimBtn) {
         exercice1.addActionListener((ActionEvent e) -> {
             label.setVerticalAlignment(JLabel.TOP);
             label.setText("Exercice 1");
             cnBtn.setBounds(150, 100, 100, 50);
             lnBtn.setBounds(150, 170, 100, 50);
             anBtn.setBounds(150, 240, 100, 50);
-            removeEveryBtns(frame, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn);
+            removeEveryBtns(frame, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn, nimBtn);
             frame.add(cnBtn);
             frame.add(lnBtn);
             frame.add(anBtn);
@@ -130,12 +132,12 @@ public class gui {
         });
     }
 
-    private static void displayEx2(JFrame frame, JMenuItem exercice2, JLabel label, JButton impotsBtn, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton factorielBtn, JButton cnpBtn) {
+    private static void displayEx2(JFrame frame, JMenuItem exercice2, JLabel label, JButton impotsBtn, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton factorielBtn, JButton cnpBtn, JButton nimBtn) {
         exercice2.addActionListener((ActionEvent e) -> {
             label.setVerticalAlignment(JLabel.TOP);
             label.setText("Exercice 2");
             impotsBtn.setBounds(150, 170, 100, 50);
-            removeEveryBtns(frame, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn);
+            removeEveryBtns(frame, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn, nimBtn);
             frame.add(impotsBtn);
             frame.setLayout(null);
             frame.setVisible(true);
@@ -150,13 +152,13 @@ public class gui {
         });
     }
 
-    private static void displayEx3(JFrame frame, JMenuItem exercice3, JLabel label, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton impotsBtn, JButton factorielBtn, JButton cnpBtn) {
+    private static void displayEx3(JFrame frame, JMenuItem exercice3, JLabel label, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton impotsBtn, JButton factorielBtn, JButton cnpBtn, JButton nimBtn) {
         exercice3.addActionListener((ActionEvent e) -> {
             label.setVerticalAlignment(JLabel.TOP);
             label.setText("Exercice 3");
             factorielBtn.setBounds(150, 100, 100, 50);
             cnpBtn.setBounds(150, 170, 100, 50);
-            removeEveryBtns(frame, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn);
+            removeEveryBtns(frame, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn, nimBtn);
             frame.add(factorielBtn);
             frame.add(cnpBtn);
             frame.setLayout(null);
@@ -184,13 +186,37 @@ public class gui {
         });
     }
 
-    private static void removeEveryBtns(JFrame frame, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton impotsBtn, JButton factorielBtn, JButton cnpBtn) {
+    private static void displayEx4(JFrame frame, JMenuItem exercice4, JLabel label, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton impotsBtn, JButton factorielBtn, JButton cnpBtn, JButton nimBtn) {
+        exercice4.addActionListener((ActionEvent e) -> {
+            label.setVerticalAlignment(JLabel.TOP);
+            label.setText("Exercice 4");
+            nimBtn.setBounds(150, 100, 100, 50);
+            removeEveryBtns(frame, cnBtn, lnBtn, anBtn, impotsBtn, factorielBtn, cnpBtn, nimBtn);
+            frame.add(nimBtn);
+            frame.setLayout(null);
+            frame.setVisible(true);
+        });
+        nimBtn.addActionListener((ActionEvent e) -> {
+            String name = JOptionPane.showInputDialog("Entrez votre nom : ");
+            String x = JOptionPane.showInputDialog("Entrez le nombre d'allumettes :");
+            while (!isInt(x) && Integer.parseInt(x) > 15) {
+                x = JOptionPane.showInputDialog("Entrez le nombre d'allumettes :");
+            }
+            boolean tour = Math.random() < 0.5;
+            //glhf
+        });
+    }
+
+
+
+    private static void removeEveryBtns(JFrame frame, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton impotsBtn, JButton factorielBtn, JButton cnpBtn, JButton nimBtn) {
         frame.remove(impotsBtn);
         frame.remove(factorielBtn);
         frame.remove(cnpBtn);
         frame.remove(cnBtn);
         frame.remove(lnBtn);
         frame.remove(anBtn);
+        frame.remove(nimBtn);
     }
 
     private static boolean isDouble(String input) {
