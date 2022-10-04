@@ -110,12 +110,16 @@ public class gui {
         });
         cnBtn.addActionListener((ActionEvent e) -> {
             String x = JOptionPane.showInputDialog("Entrez la valeur de x :");
+            if (cancel(frame, x)) return;
             while (!isDouble(x)) {
                 x = JOptionPane.showInputDialog("Entrez la valeur de x :");
+                if (cancel(frame, x)) return;
             }
             String y = JOptionPane.showInputDialog("Entrez la valeur de y :");
+            if (cancel(frame, y)) return;
             while (!isDouble(y)) {
                 y = JOptionPane.showInputDialog("Entrez la valuer de y :");
+                if (cancel(frame, y)) return;
             }
             var result = exo1.Archimede.Cn(Double.parseDouble(x), Double.parseDouble(y));
             JOptionPane.showMessageDialog(null, "Cn = " + result, "Résultat", JOptionPane.INFORMATION_MESSAGE);
@@ -123,12 +127,16 @@ public class gui {
 
         lnBtn.addActionListener((ActionEvent e) -> {
             String x = JOptionPane.showInputDialog("Entrez la valeur de x :");
+            if (cancel(frame, x)) return;
             while (!isDouble(x)) {
                 x = JOptionPane.showInputDialog("Entrez la valeur de x :");
+                if (cancel(frame, x)) return;
             }
             String y = JOptionPane.showInputDialog("Entrez la valeur de y :");
+            if (cancel(frame, y)) return;
             while (!isDouble(y)) {
                 y = JOptionPane.showInputDialog("Entrez la valuer de y :");
+                if (cancel(frame, y)) return;
             }
             var result = exo1.Archimede.Ln(Double.parseDouble(x), Double.parseDouble(y));
             JOptionPane.showMessageDialog(null, "Ln = " + result, "Résultat", JOptionPane.INFORMATION_MESSAGE);
@@ -137,8 +145,10 @@ public class gui {
 
         anBtn.addActionListener((ActionEvent e) -> {
             String x = JOptionPane.showInputDialog("Entrez la valeur de x :");
+            if (cancel(frame, x)) return;
             while (!isInt(x)) {
                 x = JOptionPane.showInputDialog("Entrez la valeur de x :");
+                if (cancel(frame, x)) return;
             }
             var result = exo1.Archimede.An(Integer.parseInt(x));
             JOptionPane.showMessageDialog(null, "An = [" + result[0] + ", " + result[1] + "]", "Résultat", JOptionPane.INFORMATION_MESSAGE);
@@ -158,8 +168,10 @@ public class gui {
         });
         impotsBtn.addActionListener((ActionEvent e) -> {
             String gains = JOptionPane.showInputDialog("Entrez la valeur de vos gains annuels : ");
+            if (cancel(frame, gains)) return;
             while (!isDouble(gains)) {
                 gains = JOptionPane.showInputDialog("Entrez la valeur de vos gains annuels : ");
+                if (cancel(frame, gains)) return;
             }
             var result = exo2.MesImpots(Double.parseDouble(gains));
             JOptionPane.showMessageDialog(frame, "Vous devez payer " + String.format("%.2f", result) + " euros d'impôts", "Résultat", JOptionPane.INFORMATION_MESSAGE);
@@ -180,20 +192,26 @@ public class gui {
         });
         factorielBtn.addActionListener((ActionEvent e) -> {
             String x = JOptionPane.showInputDialog("Entrez la valeur de x :");
+            if (cancel(frame, x)) return;
             while (!isInt(x)) {
                 x = JOptionPane.showInputDialog("Entrez la valeur de x :");
+                if (cancel(frame, x)) return;
             }
             var result = exo3.factoriel(BigInteger.valueOf(Integer.parseInt(x)));
             JOptionPane.showMessageDialog(frame, x + "! = " + result, "Résultat", JOptionPane.INFORMATION_MESSAGE);
         });
         cnpBtn.addActionListener((ActionEvent e) -> {
             String x = JOptionPane.showInputDialog("Entrez la valeur de x :");
+            if (cancel(frame, x)) return;
             while (!isInt(x)) {
                 x = JOptionPane.showInputDialog("Entrez la valeur de x :");
+                if (cancel(frame, x)) return;
             }
             String y = JOptionPane.showInputDialog("Entrez la valeur de y :");
+            if (cancel(frame, y)) return;
             while (!isInt(y)) {
                 y = JOptionPane.showInputDialog("Entrez la valuer de y :");
+                if (cancel(frame, y)) return;
             }
             var result = exo3.cnp(BigInteger.valueOf(Integer.parseInt(x)), BigInteger.valueOf(Integer.parseInt(y)));
             JOptionPane.showMessageDialog(frame, x + " parmi " + y + " = " + result, "Résultat", JOptionPane.INFORMATION_MESSAGE);
@@ -213,7 +231,7 @@ public class gui {
         nimBtn.addActionListener((ActionEvent e) -> {
             String name = JOptionPane.showInputDialog("Entrez votre nom : ");
             if (cancel(frame, name)) return;
-            while (name.isEmpty() ) {
+            while (name.isEmpty()) {
                 JOptionPane.showMessageDialog(frame, "Vous n'avez pas entré de nom", "Erreur", JOptionPane.ERROR_MESSAGE);
                 name = JOptionPane.showInputDialog("Entrez votre nom : ");
                 if (cancel(frame, name)) return;
@@ -239,12 +257,12 @@ public class gui {
                     int allumettesPrises = Integer.parseInt(y);
                     allumettes = allumettes - allumettesPrises;
                     tour = false;
-                    JOptionPane.showMessageDialog(frame, "Vous avez pris " + allumettesPrises + (allumettesPrises>1? " allumettes" : " allumette") + ", il en reste " + allumettes + "\n" +"|".repeat(allumettes), "Tour", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, "Vous avez pris " + allumettesPrises + (allumettesPrises > 1 ? " allumettes" : " allumette") + ", il en reste " + allumettes + "\n" + "|".repeat(allumettes), "Tour", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     int nim = allumettes % 4;
                     int nbAllumettes = (nim == 0) ? 1 : nim;
                     allumettes -= nbAllumettes;
-                    JOptionPane.showMessageDialog(frame, "L'ordinateur a pris " + nbAllumettes + (nbAllumettes>1? " allumettes" : " allumette") + ", il en reste " + allumettes + "\n" +"|".repeat(allumettes) , "Tour", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, "L'ordinateur a pris " + nbAllumettes + (nbAllumettes > 1 ? " allumettes" : " allumette") + ", il en reste " + allumettes + "\n" + "|".repeat(allumettes), "Tour", JOptionPane.INFORMATION_MESSAGE);
                     tour = true;
                 }
             }
