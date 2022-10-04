@@ -225,12 +225,12 @@ public class gui {
                     int allumettesPrises = Integer.parseInt(y);
                     allumettes = allumettes - allumettesPrises;
                     tour = false;
-                    JOptionPane.showMessageDialog(frame, "Vous avez pris " + allumettesPrises + (allumettesPrises>1? " allumettes" : " allumette") + ", il en reste " + allumettes, "Tour", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, "Vous avez pris " + allumettesPrises + (allumettesPrises>1? " allumettes" : " allumette") + ", il en reste " + allumettes + "\n" +"|".repeat(allumettes), "Tour", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     int nim = allumettes % 4;
                     int nbAllumettes = (nim == 0) ? 1 : nim;
                     allumettes -= nbAllumettes;
-                    JOptionPane.showMessageDialog(frame, "L'ordinateur a pris " + nbAllumettes + (nbAllumettes>1? " allumettes" : " allumette") + ", il en reste " + allumettes, "Tour", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, "L'ordinateur a pris " + nbAllumettes + (nbAllumettes>1? " allumettes" : " allumette") + ", il en reste " + allumettes + "\n" +"|".repeat(allumettes) , "Tour", JOptionPane.INFORMATION_MESSAGE);
                     tour = true;
                 }
             }
