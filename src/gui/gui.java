@@ -198,15 +198,54 @@ public class gui {
         });
         nimBtn.addActionListener((ActionEvent e) -> {
             String name = JOptionPane.showInputDialog("Entrez votre nom : ");
-            String x = JOptionPane.showInputDialog("Entrez le nombre d'allumettes :");
-            while (!isInt(x) && Integer.parseInt(x) > 15) {
-                x = JOptionPane.showInputDialog("Entrez le nombre d'allumettes :");
+            if (cancel(frame, name)) return;
+            while (name.isEmpty() ) {
+                JOptionPane.showMessageDialog(frame, "Vous n'avez pas entré de nom", "Erreur", JOptionPane.ERROR_MESSAGE);
+                name = JOptionPane.showInputDialog("Entrez votre nom : ");
+                if (cancel(frame, name)) return;
             }
+            String x = JOptionPane.showInputDialog("Entrez le nombre d'allumettes ( > 15 ) :");
+            if (cancel(frame, x)) return;
+            while (!isInt(x) || Integer.parseInt(x) < 15) {
+                x = JOptionPane.showInputDialog("Entrez le nombre d'allumettes ( > 15 ) :");
+                if (cancel(frame, x)) return;
+            }
+            int allumettes = Integer.parseInt(x);
             boolean tour = Math.random() < 0.5;
-            //glhf
+            System.out.println(tour);
+            JOptionPane.showMessageDialog(frame, "C'est au tour de " + (tour ? name : "l'ordinateur") + " de jouer", "Tour", JOptionPane.INFORMATION_MESSAGE);
+            while (allumettes > 0) {
+                if (tour) {
+                    String y = JOptionPane.showInputDialog("Entrez le nombre d'allumettes à prendre (1, 2 ou 3) :");
+                    if (cancel(frame, y)) return;
+                    while (!isInt(y) || Integer.parseInt(y) < 1 || Integer.parseInt(y) > 3) {
+                        y = JOptionPane.showInputDialog("Entrez le nombre d'allumettes à prendre (1, 2 ou 3) :");
+                        if (cancel(frame, y)) return;
+                    }
+                    int allumettesPrises = Integer.parseInt(y);
+                    allumettes = allumettes - allumettesPrises;
+                    tour = false;
+                    JOptionPane.showMessageDialog(frame, "Vous avez pris " + allumettesPrises + (allumettesPrises>1? " allumettes" : " allumette") + ", il en reste " + allumettes, "Tour", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    int nim = allumettes % 4;
+                    int nbAllumettes = (nim == 0) ? 1 : nim;
+                    allumettes -= nbAllumettes;
+                    JOptionPane.showMessageDialog(frame, "L'ordinateur a pris " + nbAllumettes + (nbAllumettes>1? " allumettes" : " allumette") + ", il en reste " + allumettes, "Tour", JOptionPane.INFORMATION_MESSAGE);
+                    tour = true;
+                }
+            }
+            JOptionPane.showMessageDialog(frame, "Le gagnant est " + (tour ? "l'ordinateur" : name), "Gagnant", JOptionPane.INFORMATION_MESSAGE);
         });
     }
 
+    private static boolean cancel(JFrame frame, String name) {
+        if (name == null) {
+            String[] ObjButtons = {"Oui", "Non"};
+            int PromptResult = JOptionPane.showOptionDialog(null, "Êtes-vous sûr de vouloir quitter ?", "Alerte", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, ObjButtons, ObjButtons[1]);
+            return PromptResult == JOptionPane.YES_OPTION;
+        }
+        return false;
+    }
 
 
     private static void removeEveryBtns(JFrame frame, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton impotsBtn, JButton factorielBtn, JButton cnpBtn, JButton nimBtn) {
