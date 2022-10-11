@@ -9,6 +9,9 @@ import utils.utils;
 import java.math.BigInteger;
 
 public class exo3 {
+    /**
+     * Il calcule la factorielle d'un nombre
+     */
     public static void main(String[] args) {
         System.out.println("Entrez un nombre positif :");
         BigInteger n = BigInteger.valueOf(utils.getPositiveInt());
@@ -26,6 +29,12 @@ public class exo3 {
         utils.Continue(utils.getExoNumber());
     }
 
+    /**
+     * Il calcule la factorielle d'un nombre
+     *
+     * @param n le nombre d'éléments dans l'ensemble
+     * @return La factorielle du nombre n.
+     */
     public static BigInteger factoriel(BigInteger n) {
         BigInteger result = BigInteger.valueOf(1);
         for (int i = 1; i <= n.intValue(); i++) {
@@ -34,6 +43,13 @@ public class exo3 {
         return result;
     }
 
+    /**
+     * La fonction prend deux nombres BigInteger comme paramètres et renvoie le résultat de la formule de combinaison
+     *
+     * @param n le nombre d'éléments dans l'ensemble
+     * @param p le nombre d'éléments dans l'ensemble
+     * @return Le nombre de combinaisons de n choses prises p à la fois.
+     */
     public static BigInteger cnp(BigInteger n, BigInteger p) {
         BigInteger result;
         result = factoriel(n).divide(factoriel(p).multiply(factoriel(n.subtract(p))));

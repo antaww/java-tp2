@@ -7,6 +7,9 @@ package terminal.Exo1;
 import utils.utils;
 
 public class exo1 {
+    /**
+     * Il calcule la valeur de Cn, Ln et An.
+     */
     public static void main(String[] args) {
         Archimede archimede = new Archimede();
         System.out.println("Calcul de Cn");
@@ -20,6 +23,11 @@ public class exo1 {
         utils.Continue(utils.getExoNumber());
     }
 
+    /**
+     * La classe Archimede contient deux méthodes statiques, Cn et Ln, qui permettent de calculer la circonférence et la
+     * longueur d'un polygone à n côtés inscrits dans un cercle. La méthode An renvoie la circonférence et la longueur d'un
+     * polygone à n côtés inscrits dans un cercle
+     */
     public static class Archimede {
         public static double Cn(double x, double y) {
             return  2 * x * y / (x + y);
