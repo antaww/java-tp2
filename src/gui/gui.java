@@ -238,7 +238,7 @@ public class gui {
             }
             String x = JOptionPane.showInputDialog("Entrez le nombre d'allumettes ( > 15 ) :");
             if (cancel(frame, x)) return;
-            while (!isInt(x) || Integer.parseInt(x) < 15) {
+            while (!isInt(x) || Integer.parseInt(x) < 16) {
                 x = JOptionPane.showInputDialog("Entrez le nombre d'allumettes ( > 15 ) :");
                 if (cancel(frame, x)) return;
             }
