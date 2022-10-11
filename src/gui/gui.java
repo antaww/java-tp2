@@ -1,9 +1,12 @@
+// Réalisé par :
+// - Olivier MISTRAL
+// - Antoine PIZZETTA
+
 package gui;
 
 import terminal.Exo1.exo1;
 import terminal.Exo2.exo2;
 import terminal.Exo3.exo3;
-import terminal.menu.menu;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +15,9 @@ import java.math.BigInteger;
 
 
 public class gui {
+    /**
+     * Il crée une interface graphique avec une barre de menus, et ajoute un menu avec un sous-menu
+     */
     public static void main(String[] args) {
         JFrame frame = new JFrame("TP2 - JAVA");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,6 +67,7 @@ public class gui {
         JButton cnpBtn = new JButton("Cn (P)");
         JButton nimBtn = new JButton("Nim");
 
+        // Création d'un nouvel écouteur d'action pour le bouton quitter.
         quitter.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -80,6 +87,14 @@ public class gui {
         displayTerminalMode(args, frame, terminalMode);
     }
 
+    /**
+     * Il affiche une boîte de dialogue demandant à l'utilisateur s'il veut quitter l'interface graphique et revenir au
+     * mode terminal
+     *
+     * @param args les arguments passés au programme
+     * @param frame le cadre de l'interface graphique
+     * @param terminalMode le JMenuItem qui sera utilisé pour afficher le JOptionPane
+     */
     private static void displayTerminalMode(String[] args, JFrame frame, JMenuItem terminalMode) {
         terminalMode.addActionListener(new AbstractAction() {
             @Override
@@ -94,6 +109,20 @@ public class gui {
         });
     }
 
+    /**
+     * Il affiche les boutons du premier exercice et leur ajoute les écouteurs d'action
+     *
+     * @param frame le JFrame
+     * @param exercice1 le JMenuItem qui sera utilisé pour afficher les boutons
+     * @param label L'étiquette qui affiche l'exercice en cours
+     * @param cnBtn Le bouton de la première méthode du premier exercice.
+     * @param lnBtn Le bouton qui sera utilisé pour appeler la fonction
+     * @param anBtn Le bouton qui s'affichera à l'écran
+     * @param impotsBtn Le bouton qui servira à afficher la fonction impots
+     * @param factorielBtn Le bouton qui servira à appeler la fonction factorielle
+     * @param cnpBtn Le bouton qui sera utilisé pour appeler la fonction Cnp.
+     * @param nimBtn Le bouton qui sera utilisé pour afficher le jeu Nim.
+     */
     private static void displayEx1(JFrame frame, JMenuItem exercice1, JLabel label, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton impotsBtn, JButton factorielBtn, JButton cnpBtn, JButton nimBtn) {
         exercice1.addActionListener((ActionEvent e) -> {
             label.setVerticalAlignment(JLabel.TOP);
@@ -108,6 +137,8 @@ public class gui {
             frame.setLayout(null);
             frame.setVisible(true);
         });
+        // Création d'un bouton qui demandera à l'utilisateur deux valeurs, x et y, puis affichera le résultat de la
+        // fonction Cn.
         cnBtn.addActionListener((ActionEvent e) -> {
             String x = JOptionPane.showInputDialog("Entrez la valeur de x :");
             if (cancel(frame, x)) return;
@@ -125,6 +156,10 @@ public class gui {
             JOptionPane.showMessageDialog(null, "Cn = " + result, "Résultat", JOptionPane.INFORMATION_MESSAGE);
         });
 
+        // Création d'un bouton qui affichera une boîte de dialogue demandant à l'utilisateur d'entrer une valeur pour x et
+        // y. Il vérifiera alors si la valeur entrée est un double et si ce n'est pas le cas, il affichera une autre boîte
+        // de dialogue demandant à l'utilisateur d'entrer une valeur pour x et y. Si la valeur saisie est un double, il
+        // affichera le résultat de la fonction Ln.
         lnBtn.addActionListener((ActionEvent e) -> {
             String x = JOptionPane.showInputDialog("Entrez la valeur de x :");
             if (cancel(frame, x)) return;
@@ -143,6 +178,10 @@ public class gui {
             frame.setVisible(true);
         });
 
+        // Création d'un bouton qui affichera une boîte de dialogue demandant une valeur de x. Si l'utilisateur annule la
+        // boîte de dialogue, le programme reviendra. Si l'utilisateur saisit une valeur, le programme vérifiera s'il
+        // s'agit d'un nombre entier. Si ce n'est pas le cas, le programme redemandera une valeur. S'il s'agit d'un nombre
+        // entier, le programme calculera la valeur de An et l'affichera dans une boîte de dialogue.
         anBtn.addActionListener((ActionEvent e) -> {
             String x = JOptionPane.showInputDialog("Entrez la valeur de x :");
             if (cancel(frame, x)) return;
@@ -156,6 +195,20 @@ public class gui {
         });
     }
 
+    /**
+     * Il affiche les boutons du deuxième exercice et leur ajoute les écouteurs d'action
+     *
+     * @param frame le JFrame
+     * @param exercice2 le JMenuItem qui sera utilisé pour afficher les boutons
+     * @param label L'étiquette qui affiche l'exercice en cours
+     * @param cnBtn Le bouton de la première méthode du premier exercice.
+     * @param lnBtn Le bouton qui sera utilisé pour appeler la fonction
+     * @param anBtn Le bouton qui s'affichera à l'écran
+     * @param impotsBtn Le bouton qui servira à afficher la fonction impots
+     * @param factorielBtn Le bouton qui servira à appeler la fonction factorielle
+     * @param cnpBtn Le bouton qui sera utilisé pour appeler la fonction Cnp.
+     * @param nimBtn Le bouton qui sera utilisé pour afficher le jeu Nim.
+     */
     private static void displayEx2(JFrame frame, JMenuItem exercice2, JLabel label, JButton impotsBtn, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton factorielBtn, JButton cnpBtn, JButton nimBtn) {
         exercice2.addActionListener((ActionEvent e) -> {
             label.setVerticalAlignment(JLabel.TOP);
@@ -178,6 +231,20 @@ public class gui {
         });
     }
 
+    /**
+     * Il affiche les boutons du troisième exercice et leur ajoute les écouteurs d'action
+     *
+     * @param frame le JFrame
+     * @param exercice3 le JMenuItem qui sera utilisé pour afficher les boutons
+     * @param label L'étiquette qui affiche l'exercice en cours
+     * @param cnBtn Le bouton de la première méthode du premier exercice.
+     * @param lnBtn Le bouton qui sera utilisé pour appeler la fonction
+     * @param anBtn Le bouton qui s'affichera à l'écran
+     * @param impotsBtn Le bouton qui servira à afficher la fonction impots
+     * @param factorielBtn Le bouton qui servira à appeler la fonction factorielle
+     * @param cnpBtn Le bouton qui sera utilisé pour appeler la fonction Cnp.
+     * @param nimBtn Le bouton qui sera utilisé pour afficher le jeu Nim.
+     */
     private static void displayEx3(JFrame frame, JMenuItem exercice3, JLabel label, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton impotsBtn, JButton factorielBtn, JButton cnpBtn, JButton nimBtn) {
         exercice3.addActionListener((ActionEvent e) -> {
             label.setVerticalAlignment(JLabel.TOP);
@@ -218,6 +285,20 @@ public class gui {
         });
     }
 
+    /**
+     * Il affiche les boutons du quatrième exercice et leur ajoute les écouteurs d'action
+     *
+     * @param frame le JFrame
+     * @param exercice4 le JMenuItem qui sera utilisé pour afficher les boutons
+     * @param label L'étiquette qui affiche l'exercice en cours
+     * @param cnBtn Le bouton de la première méthode du premier exercice.
+     * @param lnBtn Le bouton qui sera utilisé pour appeler la fonction
+     * @param anBtn Le bouton qui s'affichera à l'écran
+     * @param impotsBtn Le bouton qui servira à afficher la fonction impots
+     * @param factorielBtn Le bouton qui servira à appeler la fonction factorielle
+     * @param cnpBtn Le bouton qui sera utilisé pour appeler la fonction Cnp.
+     * @param nimBtn Le bouton qui sera utilisé pour afficher le jeu Nim.
+     */
     private static void displayEx4(JFrame frame, JMenuItem exercice4, JLabel label, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton impotsBtn, JButton factorielBtn, JButton cnpBtn, JButton nimBtn) {
         exercice4.addActionListener((ActionEvent e) -> {
             label.setVerticalAlignment(JLabel.TOP);
@@ -280,6 +361,18 @@ public class gui {
     }
 
 
+    /**
+     * Il supprime chaque bouton du cadre
+     *
+     * @param frame le cadre qui contient les boutons
+     * @param cnBtn Le bouton qui servira à appeler la fonction qui calculera le nombre de combinaisons.
+     * @param lnBtn Le bouton qui sera utilisé pour calculer le logarithme naturel d'un nombre.
+     * @param anBtn le bouton qui servira à afficher la fenêtre "Année bissextile"
+     * @param impotsBtn Le bouton qui servira à calculer les taxes
+     * @param factorielBtn Le bouton qui sera utilisé pour calculer la factorielle d'un nombre.
+     * @param cnpBtn Le bouton qui sera utilisé pour revenir au menu principal.
+     * @param nimBtn le bouton qui servira à revenir au menu principal
+     */
     private static void removeEveryBtns(JFrame frame, JButton cnBtn, JButton lnBtn, JButton anBtn, JButton impotsBtn, JButton factorielBtn, JButton cnpBtn, JButton nimBtn) {
         frame.remove(impotsBtn);
         frame.remove(factorielBtn);
@@ -290,6 +383,12 @@ public class gui {
         frame.remove(nimBtn);
     }
 
+    /**
+     * Si l'entrée peut être analysée comme un double, renvoie vrai, sinon renvoie faux
+     *
+     * @param input La chaîne à vérifier
+     * @return Une valeur booléenne.
+     */
     private static boolean isDouble(String input) {
         try {
             Double.parseDouble(input);
@@ -299,6 +398,12 @@ public class gui {
         }
     }
 
+    /**
+     * Si l'entrée peut être analysée comme un entier, renvoie vrai, sinon renvoie faux.
+     *
+     * @param input La chaîne à vérifier
+     * @return Une valeur booléenne.
+     */
     private static boolean isInt(String input) {
         try {
             Integer.parseInt(input);
