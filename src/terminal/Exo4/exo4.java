@@ -7,7 +7,9 @@ package terminal.Exo4;
 import utils.utils;
 
 public class exo4 {
+
     public static void main(String[] args) {
+        // Demander à l'utilisateur son nom et le nombre d'allumettes pour commencer.
         System.out.println("Entrez votre nom :");
         String nom = utils.getString();
         System.out.println("Choisir le nombre d'allumette de départ ( > 15) :");
@@ -19,7 +21,10 @@ public class exo4 {
         int space = 0;
         boolean tour = Math.random() < 0.5;
         System.out.println(tour ? "L'ordinateur commence (" + allumettes + " allumettes)" : nom + " commence(" + allumettes + " allumettes)");
+        // C'est la boucle du jeu.
         while (allumettes > 0) {
+            // C'est au tour de l'ordinateur. Il prend le nombre d'allumettes qui laissera à l'adversaire un multiple de 4
+            // allumettes.
             if (tour) {
                 System.out.print(" ".repeat(space) + "|".repeat(allumettes));
                 int nim = allumettes % 4;
@@ -27,6 +32,7 @@ public class exo4 {
                 allumettes -= nbAllumettes;
                 space += nbAllumettes;
                 System.out.println(nbAllumettes > 1 ? " L'ordinateur prend " + nbAllumettes + " allumettes (" + allumettes + (allumettes > 1 ? " restantes)" : "restante"): " L'ordinateur prend 1 allumette (" + allumettes + (allumettes > 1 ? " restantes)" : "restante"));
+            // C'est au tour du joueur. Il peut choisir le nombre d'allumettes qu'il souhaite supprimer.
             } else {
                 System.out.print(" ".repeat(space) + "|".repeat(allumettes) + " " + nom + " enlève : ");
                 int choix = utils.getInt();
